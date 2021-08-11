@@ -1,5 +1,7 @@
 # hassio-radio
 
+- mbc_fm.py, mbc_fm_1.py, mbc_fm_2.py는 /config/www/radio 아래에 넣어주세요.
+
 ``` yaml
 // scripts.yaml 추가
 
