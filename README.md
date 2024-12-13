@@ -23,7 +23,7 @@ radio_mbc_default:
 ```
 
 ``` yaml
-//configuration.yaml
+// configuration.yaml
   
 shell_command:
   radio_mbc_fm: 'python3 /config/www/radio/mbc_fm.py'
