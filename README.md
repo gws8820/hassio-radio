@@ -1,9 +1,9 @@
 # hassio-radio
 
-- mbc_fm.py, mbc_fm_1.py, mbc_fm_2.py는 /config/www/radio 아래에 넣어주세요.
+Please put python files under /config/www/radio
 
 ``` yaml
-// scripts.yaml 추가
+// scripts.yaml
 
 radio_mbc_default:
   alias: MBC 표준 FM
@@ -16,13 +16,14 @@ radio_mbc_default:
     entity_id: sensor.mbc_fm_urls
   - service: media_player.play_media
     data:
-      entity_id: media_player.shilvister_s_home
-      media_content_id: "{{ states('sensor.mbc_fm_url') }}{{states('sensor.mbc_fm_urls')}}"
+      entity_id: YOUR_ENTITY_ID
+      media_content_id: "{{ states('sensor.mbc_fm_url') }}{{ states('sensor.mbc_fm_urls') }}"
       media_content_type: music
   icon: mdi:radio
-  
+```
 
-//configuration.yaml 추가
+``` yaml
+//configuration.yaml
   
 shell_command:
   radio_mbc_fm: 'python3 /config/www/radio/mbc_fm.py'
@@ -34,16 +35,4 @@ sensor:
   - platform: command_line
     name: mbc_fm_urls
     command: "python3 /config/www/radio/mbc_fm_2.py"
-    
-google_assistant:
-  project_id: 고유 프로젝트 아이디
-  service_account: !include service_account.json
-  report_state: true
-  exposed_domains:
-    - input boolean
-    - script
-  entity_config:
-    script.mbc_fm_default:
-      name: MBC 표준 FM
-      expose: true 
 ```
